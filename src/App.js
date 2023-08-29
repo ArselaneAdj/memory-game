@@ -23,7 +23,7 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0)
   const [highScore, setHighScore] = useState(()=>{
     const localValue = localStorage.getItem("ITEMS")
-    if(localValue == null) return []
+    if(localValue == null) return 0
     return JSON.parse(localValue)
   }, [])
   useEffect(()=>{
