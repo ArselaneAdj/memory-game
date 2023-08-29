@@ -3,29 +3,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
-  
-  // const HEROES = [
-  //   'Bane',
-  //   'Lion',
-  //   'Faceless Void',
-  //   'Chaos Knight',
-  //   'Lina',
-  //   'Wraith King',
-  //   'Ember Spirit',
-  //   'Abaddon',
-  //   'Obsidian Destroyer',
-  //   'Necrophos',
-  //   'Banes',
-  //   'Lions',
-  //   'Facelesss Void',
-  //   'Chaos Ksnight',
-  //   'Linas',
-  //   'Wraitsh King',
-  //   'Ember sSpirit',
-  //   'Abaddons',
-  //   'Obsidians Destroyer',
-  //   'Necrophoss',
-  // ]
 
   const HEROES = {
     'Bane': 'bane',
@@ -44,7 +21,15 @@ function App() {
 
   const [clickedHeroes, setClickedHeroes] = useState([])
   const [currentScore, setCurrentScore] = useState(0)
-  const [highScore, setHighScore] = useState(0)
+  const [highScore, setHighScore] = useState(()=>{
+    const localValue = localStorage.getItem("ITEMS")
+    if(localValue == null) return []
+    return JSON.parse(localValue)
+  }, [])
+  useEffect(()=>{
+    localStorage.setItem("ITEMS", JSON.stringify(highScore))
+  }, [highScore])
+
   const [heroesNames, setHeroesNames] = useState(Object.keys(HEROES))
 
   const shuffleCards = () => {
