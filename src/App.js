@@ -38,16 +38,6 @@ function App() {
     'Abaddon': 'abaddon',
     'Obsidian Destroyer': 'obsidian_destroyer',
     'Necrophos': 'necrophos',
-    'Banse': 'basne',
-    'Liosn': 'liosn',
-    'Facseless Void': 'faceless_vsoid',
-    'Chaos Knisght': 'chaoss_knight',
-    'Linsa': 'lisa',
-    'Wraith Kinsg': 'wsraith_king',
-    'Ember sSpirit': 'ember_sspirit',
-    'Abaddosn': 'abaddons',
-    'Obsidisan Destroyer': 'obsidsian_destroyer',
-    'Necrophsos': 'necrsophos',
   }
 
   
