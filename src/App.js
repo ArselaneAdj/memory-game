@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import bane from './logo192.png';
 
 function App() {
-
+  
   const HEROES = {
-    'Bane': 'bane',
-    'Lion': 'lion',
-    'Faceless Void': 'faceless_void',
-    'Chaos Knight': 'chaos_knight',
-    'Lina': 'lina',
-    'Wraith King': 'wraith_king',
-    'Ember Spirit': 'ember_spirit',
-    'Abaddon': 'abaddon',
-    'Obsidian Destroyer': 'obsidian_destroyer',
-    'Necrophos': 'necrophos',
+    "https://w7.pngwing.com/pngs/664/275/png-transparent-himalayan-cat-thai-cat-siamese-cat-balinese-cat-birman-ragdoll-cat-mammal-animals-cat-like-mammal-thumbnail.png": bane,
+    'https://w7.pngwing.com/pngs/817/323/png-transparent-cat-kitten-cats-mammal-animals-cat-like-mammal-thumbnail.png': 'lion',
+    'https://w7.pngwing.com/pngs/614/838/png-transparent-cat-kitty-creative-cat-cat-thumbnail.png': 'faceless_void',
+    'https://w7.pngwing.com/pngs/83/441/png-transparent-cat-kitten-dog-pet-sitting-cat-mammal-cat-like-mammal-animals-thumbnail.png': 'chaos_knight',
+    'https://w7.pngwing.com/pngs/614/838/png-transparent-brown-tabby-cat-cat-dog-kitten-pet-dentistry-cat-mammal-animals-cat-like-mammal-thumbnail.png': 'lina',
+    'https://w7.pngwing.com/pngs/148/825/png-transparent-siberian-cat-persian-cat-graphy-pet-collar-cats-miscellaneous-mammal-animals-thumbnail.png': 'wraith_king',
+    'https://w7.pngwing.com/pngs/166/496/png-transparent-british-shorthair-kitten-dog-cat-relationship-cat-food-cat-short-haired-gray-cat-other-white-mammal-thumbnail.png': 'ember_spirit',
+    'https://w7.pngwing.com/pngs/508/532/png-transparent-bengal-cat-bengal-cat-siberian-cat-sphynx-cat-somali-cat-siamese-cat-kitten-mammal-cat-like-mammal-animals-thumbnail.png': 'abaddon',
+    'https://w7.pngwing.com/pngs/463/199/png-transparent-cat-kitty-creative-cat-cat-thumbnail.png': 'obsidian_destroyer',
+    'https://w7.pngwing.com/pngs/174/600/png-transparent-cat-animal-lovely-cat-thumbnail.png': 'necrophos',
   }
 
   
@@ -22,12 +23,12 @@ function App() {
   const [clickedHeroes, setClickedHeroes] = useState([])
   const [currentScore, setCurrentScore] = useState(0)
   const [highScore, setHighScore] = useState(()=>{
-    const localValue = localStorage.getItem("ITEMS")
+    const localValue = sessionStorage.getItem("ITEMS")
     if(localValue == null) return 0
     return JSON.parse(localValue)
   }, [])
   useEffect(()=>{
-    localStorage.setItem("ITEMS", JSON.stringify(highScore))
+    sessionStorage.setItem("ITEMS", JSON.stringify(highScore))
   }, [highScore])
 
   const [heroesNames, setHeroesNames] = useState(Object.keys(HEROES))
@@ -78,16 +79,17 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1>Score: {currentScore}</h1>
-        <h1>High Score: {highScore}</h1>
-        <h1>Target Score: {heroesNames.length}</h1>
+        <h1>Score: {currentScore}-----High Score: {highScore}-----Target Score: {heroesNames.length}</h1>
       </div>
       {heroesNames.map((hero,index) => {
-        return (<button className="btn btn-dark" style={{margin:"20px"}} id='f' key={index} title={hero} onClick={()=>{shuffleCards();handleCardClick();setClickedHeroes([...clickedHeroes,hero]);if (clickedHeroes.includes(hero)) {
+        return (<><img alt='s' src={hero} className="btn btn-dark" style={{margin:"20px"}} id='f' key={index} title={hero} onClick={()=>{shuffleCards();handleCardClick();setClickedHeroes([...clickedHeroes,hero]);if (clickedHeroes.includes(hero)) {
           resetScore()  
           console.log(clickedHeroes)
     
-        } }}>{hero}</button>)
+        } }}/>
+        
+        
+        </>)
 
       })}
       
